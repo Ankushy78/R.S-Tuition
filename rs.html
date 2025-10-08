@@ -1,0 +1,2138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R.S Tuition - Excellence in Education</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Modern CSS Reset & Variables */
+        :root {
+            --primary-red: #e63946;
+            --primary-blue: #1d3557;
+            --accent-blue: #457b9d;
+            --light-blue: #a8dadc;
+            --light-bg: #f1faee;
+            --dark-text: #2b2d42;
+            --light-text: #f8f9fa;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+            --radius: 12px;
+            --header-height: 80px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-blue) 100%);
+            color: var(--light-text);
+            padding: 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            height: var(--header-height);
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 30px;
+            height: 100%;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .logo-img {
+            height: 50px;
+            width: auto;
+            border-radius: 8px;
+        }
+
+        .logo-circle {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-red);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 10px rgba(230, 57, 70, 0.3);
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .logo-text span {
+            color: var(--primary-red);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 15px;
+            border-radius: 30px;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-links a.active {
+            background-color: var(--primary-red);
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+            margin-left: 30px;
+        }
+
+        .btn {
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-size: 0.9rem;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--light-text);
+            color: var(--light-text);
+        }
+
+        .btn-outline:hover {
+            background: var(--light-text);
+            color: var(--primary-blue);
+        }
+
+        .btn-primary {
+            background: var(--primary-red);
+            color: var(--light-text);
+            box-shadow: 0 4px 15px rgba(230, 57, 70, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(230, 57, 70, 0.4);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-top: var(--header-height);
+            min-height: calc(100vh - var(--header-height));
+        }
+
+        .section {
+            display: none;
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-blue) 100%);
+            color: var(--light-text);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        /* Dashboard */
+        .dashboard {
+            padding: 40px 0;
+        }
+
+        .dashboard-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 25px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border-top: 4px solid var(--primary-red);
+        }
+
+        .stat-card i {
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        .stat-card .number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary-blue);
+            margin: 10px 0;
+        }
+
+        .stat-card .label {
+            color: var(--dark-text);
+            opacity: 0.8;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-blue);
+        }
+
+        /* Forms */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark-text);
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 0 3px rgba(69, 123, 157, 0.2);
+        }
+
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .remember-me input {
+            width: auto;
+        }
+
+        .forgot-password {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+
+        /* Login/Register Forms */
+        .auth-form {
+            max-width: 500px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .auth-form h2 {
+            text-align: center;
+            color: var(--primary-blue);
+            margin-bottom: 30px;
+        }
+
+        .auth-tabs {
+            display: flex;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .auth-tab {
+            padding: 12px 25px;
+            background: none;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            color: var(--dark-text);
+            opacity: 0.7;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .auth-tab.active {
+            opacity: 1;
+            color: var(--primary-blue);
+        }
+
+        .auth-tab.active:after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--primary-red);
+        }
+
+        .auth-form-content {
+            display: none;
+        }
+
+        .auth-form-content.active {
+            display: block;
+        }
+
+        /* Admin Panel */
+        .admin-panel, .student-panel {
+            display: none;
+        }
+
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--light-blue);
+        }
+
+        .panel-header h2 {
+            color: var(--primary-blue);
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .user-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .user-details h3 {
+            color: var(--primary-blue);
+            margin-bottom: 5px;
+        }
+
+        .user-details p {
+            color: var(--dark-text);
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        .logout-btn {
+            background: var(--primary-red);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .logout-btn:hover {
+            background: #c1121f;
+            transform: translateY(-2px);
+        }
+
+        /* File Lists */
+        .file-list {
+            margin-top: 20px;
+        }
+
+        .file-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            transition: var(--transition);
+        }
+
+        .file-item:hover {
+            background: #f9f9f9;
+            border-color: var(--light-blue);
+        }
+
+        .file-info h4 {
+            color: var(--primary-blue);
+            margin-bottom: 5px;
+        }
+
+        .file-info p {
+            font-size: 0.9rem;
+            color: var(--dark-text);
+            opacity: 0.7;
+        }
+
+        .file-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .file-action-btn {
+            background: var(--accent-blue);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .file-action-btn:hover {
+            background: var(--primary-blue);
+        }
+
+        .file-action-btn.download {
+            background: var(--primary-red);
+        }
+
+        .file-action-btn.download:hover {
+            background: #c1121f;
+        }
+
+        /* Test Section */
+        .test-list {
+            margin-top: 20px;
+        }
+
+        .test-item {
+            padding: 20px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            transition: var(--transition);
+        }
+
+        .test-item:hover {
+            background: #f9f9f9;
+            border-color: var(--light-blue);
+        }
+
+        .test-item h4 {
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+        }
+
+        .test-item p {
+            margin-bottom: 15px;
+            color: var(--dark-text);
+            opacity: 0.8;
+        }
+
+        /* MCQ Test */
+        .mcq-test {
+            background: white;
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            margin-top: 20px;
+        }
+
+        .mcq-question {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .mcq-question:last-child {
+            border-bottom: none;
+        }
+
+        .mcq-question h4 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        .mcq-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .mcq-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            border: 1px solid #eee;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .mcq-option:hover {
+            background: #f5f5f5;
+        }
+
+        .mcq-option input {
+            width: auto;
+        }
+
+        /* Results */
+        .results-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .results-table th, .results-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .results-table th {
+            background: var(--primary-blue);
+            color: white;
+            font-weight: 600;
+        }
+
+        .results-table tr:hover {
+            background: #f9f9f9;
+        }
+
+        /* Student Management Table */
+        .students-table-container {
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+
+        .students-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            min-width: 700px;
+        }
+
+        .students-table th, .students-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .students-table th {
+            background: var(--primary-blue);
+            color: white;
+            font-weight: 600;
+        }
+
+        .students-table tr:hover {
+            background: #f9f9f9;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .action-btn {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: var(--transition);
+        }
+
+        .action-btn.edit {
+            background: var(--accent-blue);
+            color: white;
+        }
+
+        .action-btn.delete {
+            background: var(--primary-red);
+            color: white;
+        }
+
+        .action-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        /* Alert Messages */
+        .alert {
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .alert-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-blue);
+            color: var(--light-text);
+            padding: 40px 0 20px;
+            margin-top: 50px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h3:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary-red);
+        }
+
+        .footer-col p {
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: var(--light-text);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--primary-red);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 0 20px;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            nav {
+                position: fixed;
+                top: var(--header-height);
+                left: 0;
+                width: 100%;
+                background: var(--primary-blue);
+                padding: 20px;
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: var(--transition);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 10px;
+                width: 100%;
+            }
+
+            .auth-buttons {
+                margin-left: 0;
+                margin-top: 20px;
+                flex-direction: column;
+                gap: 10px;
+                width: 100%;
+            }
+
+            .auth-buttons .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .dashboard-stats {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .auth-form {
+                padding: 30px 20px;
+            }
+
+            .panel-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+            .user-info {
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .dashboard-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+
+            .students-table th, .students-table td {
+                padding: 10px;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .action-btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <img src="rs.png" alt="R.S Tuition Logo" class="logo-img">
+                <div class="logo-text">R.S <span>Tuition</span></div>
+            </div>
+            
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#" class="nav-link active" data-section="home">Home</a></li>
+                    <li><a href="#" class="nav-link" data-section="courses">Courses</a></li>
+                    <li><a href="#" class="nav-link" data-section="resources">Resources</a></li>
+                    <li><a href="#" class="nav-link" data-section="results">Results</a></li>
+                    <li><a href="#" class="nav-link" data-section="about">About Us</a></li>
+                </ul>
+                
+                <div class="auth-buttons">
+                    <button class="btn btn-outline" id="studentLoginBtn">Student Login</button>
+                    <button class="btn btn-primary" id="adminLoginBtn">Admin Login</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Home Section -->
+        <section id="home" class="section active">
+            <div class="hero">
+                <h1>Excellence in Education for Classes 1 to 10</h1>
+                <p>Personalized learning experience with comprehensive study materials, interactive tests, and expert guidance to help students achieve academic success.</p>
+                <div class="hero-btns">
+                    <button class="btn btn-primary" id="heroStudentBtn">Student Portal</button>
+                    <button class="btn btn-outline" id="heroAdminBtn">Admin Panel</button>
+                </div>
+            </div>
+            
+            <div class="dashboard">
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <i class="fas fa-users"></i>
+                        <div class="number">100+</div>
+                        <div class="label">Students Enrolled</div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-book-open"></i>
+                        <div class="number">500+</div>
+                        <div class="label">Study Materials</div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-tasks"></i>
+                        <div class="number">200+</div>
+                        <div class="label">Practice Tests</div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-chart-line"></i>
+                        <div class="number">95%</div>
+                        <div class="label">Success Rate</div>
+                    </div>
+                </div>
+                
+                <div class="content-grid">
+                    <div class="card">
+                        <h3>For Students</h3>
+                        <p>Access comprehensive study materials, practice tests, and track your academic progress.</p>
+                        <button class="btn btn-primary" style="margin-top: 15px;" id="studentAccessBtn">Access Student Portal</button>
+                    </div>
+                    
+                    
+                    <div class="card">
+                        <h3>For Teachers</h3>
+                        <p>Manage classes, upload materials, create tests, and track student performance.</p>
+                        <button class="btn btn-primary" style="margin-top: 15px;" id="adminAccessBtn">Access Admin Panel</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Student Login Section -->
+        <section id="student-login" class="section">
+            <div class="auth-form">
+                <h2>Student Portal</h2>
+                
+                <div class="auth-tabs">
+                    <button class="auth-tab active" data-tab="student-login-tab">Login</button>
+                    <button class="auth-tab" data-tab="student-register-tab">Register</button>
+                </div>
+                
+                <div class="auth-form-content active" id="student-login-tab">
+                    <form id="studentLoginForm">
+                        <div class="form-group">
+                            <label for="studentEmail">Email Address</label>
+                            <input type="email" id="studentEmail" placeholder="Enter your email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="studentPassword">Password</label>
+                            <input type="password" id="studentPassword" placeholder="Enter your password" required>
+                        </div>
+                        
+                        <div class="form-options">
+                            <div class="remember-me">
+                                <input type="checkbox" id="rememberStudent">
+                                <label for="rememberStudent">Remember me</label>
+                            </div>
+                            <a href="#" class="forgot-password">Forgot Password?</a>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
+                    </form>
+                </div>
+                
+                <div class="auth-form-content" id="student-register-tab">
+                    <form id="studentRegisterForm">
+                        <div class="form-group">
+                            <label for="registerName">Full Name</label>
+                            <input type="text" id="registerName" placeholder="Enter your full name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="registerEmail">Email Address</label>
+                            <input type="email" id="registerEmail" placeholder="Enter your email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="registerClass">Select Class</label>
+                            <select id="registerClass" required>
+                                <option value="">Choose your class</option>
+                                <option value="1">Class 1</option>
+                                <option value="2">Class 2</option>
+                                <option value="3">Class 3</option>
+                                <option value="4">Class 4</option>
+                                <option value="5">Class 5</option>
+                                <option value="6">Class 6</option>
+                                <option value="7">Class 7</option>
+                                <option value="8">Class 8</option>
+                                <option value="9">Class 9</option>
+                                <option value="10">Class 10</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="registerPassword">Password</label>
+                            <input type="password" id="registerPassword" placeholder="Create a password" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="registerConfirmPassword">Confirm Password</label>
+                            <input type="password" id="registerConfirmPassword" placeholder="Confirm your password" required>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Create Account</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Admin Login Section -->
+        <section id="admin-login" class="section">
+            <div class="auth-form">
+                <h2>Admin Panel</h2>
+                <p style="text-align: center; margin-bottom: 20px; color: var(--dark-text); opacity: 0.8;">Use predefined credentials: admin@rstuition.com / admin123</p>
+                
+                <form id="adminLoginForm">
+                    <div class="form-group">
+                        <label for="adminEmail">Email Address</label>
+                        <input type="email" id="adminEmail" placeholder="Enter admin email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="adminPassword">Password</label>
+                        <input type="password" id="adminPassword" placeholder="Enter admin password" required>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Login to Admin Panel</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Student Panel -->
+        <section id="student-panel" class="section student-panel">
+            <div class="panel-header">
+                <h2>Student Dashboard</h2>
+                <div class="user-info">
+                    <div class="user-details">
+                        <h3 id="studentWelcome">Welcome, Student!</h3>
+                        <p id="studentClassInfo">Class: Loading...</p>
+                    </div>
+                    <button class="logout-btn" id="studentLogoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</button>
+                </div>
+            </div>
+            
+            <div class="dashboard-stats">
+                <div class="stat-card">
+                    <i class="fas fa-book"></i>
+                    <div class="number" id="studentNotesCount">0</div>
+                    <div class="label">Available Notes</div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-file-alt"></i>
+                    <div class="number" id="studentPYQCount">0</div>
+                    <div class="label">PYQ Papers</div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-tasks"></i>
+                    <div class="number" id="studentTestsCount">0</div>
+                    <div class="label">MCQ Tests</div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-chart-line"></i>
+                    <div class="number" id="studentResultsCount">0</div>
+                    <div class="label">Your Results</div>
+                </div>
+            </div>
+            
+            <div class="content-grid">
+                <div class="card">
+                    <h3><i class="fas fa-book"></i> Study Notes</h3>
+                    <div id="studentNotesList" class="file-list">
+                        <p>Loading your study notes...</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3><i class="fas fa-file-alt"></i> Previous Year Questions</h3>
+                    <div id="studentPYQList" class="file-list">
+                        <p>Loading PYQ papers...</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3><i class="fas fa-tasks"></i> Practice Tests</h3>
+                    <div id="studentTestsList" class="test-list">
+                        <p>Loading available tests...</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3><i class="fas fa-chart-line"></i> Your Results</h3>
+                    <div id="studentResults">
+                        <p>Your test results will appear here</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Admin Panel -->
+        <section id="admin-panel" class="section admin-panel">
+            <div class="panel-header">
+                <h2>Admin Dashboard</h2>
+                <div class="user-info">
+                    <div class="user-avatar">A</div>
+                    <div class="user-details">
+                        <h3>Administrator</h3>
+                        <p>R.S Tuition Management</p>
+                    </div>
+                    <button class="logout-btn" id="adminLogoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</button>
+                </div>
+            </div>
+            
+            <div class="dashboard-stats">
+                <div class="stat-card">
+                    <i class="fas fa-users"></i>
+                    <div class="number" id="adminStudentsCount">0</div>
+                    <div class="label">Total Students</div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-book"></i>
+                    <div class="number" id="adminNotesCount">0</div>
+                    <div class="label">Uploaded Notes</div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-file-alt"></i>
+                    <div class="number" id="adminPYQCount">0</div>
+                    <div class="label">PYQ Papers</div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-tasks"></i>
+                    <div class="number" id="adminTestsCount">0</div>
+                    <div class="label">MCQ Tests</div>
+                </div>
+            </div>
+            
+            <div class="content-grid">
+                <div class="card">
+                    <h3><i class="fas fa-upload"></i> Upload Study Materials</h3>
+                    <form id="uploadNotesForm">
+                        <div class="form-group">
+                            <label for="notesClass">Select Class</label>
+                            <select id="notesClass" required>
+                                <option value="">Select Class</option>
+                                <option value="1">Class 1</option>
+                                <option value="2">Class 2</option>
+                                <option value="3">Class 3</option>
+                                <option value="4">Class 4</option>
+                                <option value="5">Class 5</option>
+                                <option value="6">Class 6</option>
+                                <option value="7">Class 7</option>
+                                <option value="8">Class 8</option>
+                                <option value="9">Class 9</option>
+                                <option value="10">Class 10</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="notesTitle">Title</label>
+                            <input type="text" id="notesTitle" placeholder="Enter notes title" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="notesDescription">Description</label>
+                            <textarea id="notesDescription" placeholder="Enter notes description" rows="3"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="notesFile">Upload File</label>
+                            <input type="file" id="notesFile">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Upload Notes</button>
+                    </form>
+                    <div id="notesAlert"></div>
+                </div>
+                
+                <div class="card">
+                    <h3><i class="fas fa-plus-circle"></i> Create MCQ Test</h3>
+                    <form id="createTestForm">
+                        <div class="form-group">
+                            <label for="testClass">Select Class</label>
+                            <select id="testClass" required>
+                                <option value="">Select Class</option>
+                                <option value="1">Class 1</option>
+                                <option value="2">Class 2</option>
+                                <option value="3">Class 3</option>
+                                <option value="4">Class 4</option>
+                                <option value="5">Class 5</option>
+                                <option value="6">Class 6</option>
+                                <option value="7">Class 7</option>
+                                <option value="8">Class 8</option>
+                                <option value="9">Class 9</option>
+                                <option value="10">Class 10</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="testTitle">Test Title</label>
+                            <input type="text" id="testTitle" placeholder="Enter test title" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="testDescription">Description</label>
+                            <textarea id="testDescription" placeholder="Enter test description" rows="2"></textarea>
+                        </div>
+                        <div id="questionsContainer">
+                            <div class="form-group">
+                                <label>Question 1</label>
+                                <input type="text" class="question-input" placeholder="Enter question" required>
+                                <input type="text" class="option-input" placeholder="Option A" required>
+                                <input type="text" class="option-input" placeholder="Option B" required>
+                                <input type="text" class="option-input" placeholder="Option C" required>
+                                <input type="text" class="option-input" placeholder="Option D" required>
+                                <select class="correct-answer" required>
+                                    <option value="">Correct Answer</option>
+                                    <option value="0">A</option>
+                                    <option value="1">B</option>
+                                    <option value="2">C</option>
+                                    <option value="3">D</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-outline" id="addQuestionBtn">Add Another Question</button>
+                        <button type="submit" class="btn btn-primary">Create Test</button>
+                    </form>
+                    <div id="testAlert"></div>
+                </div>
+                
+                <div class="card">
+                    <h3><i class="fas fa-user-graduate"></i> Manage Students</h3>
+                    <div class="students-table-container">
+                        <table class="students-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Class</th>
+                                    <th>Registration Date</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="studentsList">
+                                <!-- Student data will be populated here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3><i class="fas fa-chart-bar"></i> View Results</h3>
+                    <div id="adminResults">
+                        <p>Test results will appear here</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Other Sections (Courses, Resources, Results, About) -->
+        <section id="courses" class="section">
+            <div class="card">
+                <h2>Our Courses</h2>
+                <p>We offer comprehensive courses for classes 1 to 10 with specialized focus on:</p>
+                <ul style="margin: 15px 0 15px 20px;">
+                    <li>Mathematics & Mental Ability</li>
+                    <li>Science & Technology</li>
+                    <li>English Language & Literature</li>
+                    <li>Social Studies</li>
+                    <li>Computer Education</li>
+                </ul>
+                <p>Our curriculum is designed to build strong foundational knowledge while preparing students for academic excellence.</p>
+            </div>
+        </section>
+
+        <section id="resources" class="section">
+            <div class="card">
+                <h2>Learning Resources</h2>
+                <p>Access our extensive collection of learning resources:</p>
+                <div class="content-grid" style="margin-top: 20px;">
+                    <div class="card">
+                        <h3>Study Notes</h3>
+                        <p>Comprehensive chapter-wise notes for all subjects.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Practice Worksheets</h3>
+                        <p>Downloadable worksheets for practice and revision.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Video Lessons</h3>
+                        <p>Animated video explanations for complex topics.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <section id="about" class="section">
+            <div class="card">
+                <h2>About R.S Tuition</h2>
+                <p>R.S Tuition has been providing quality education to students from classes 1 to 10. Our mission is to make learning engaging, effective, and accessible to all students.</p>
+                <p>With a team of experienced educators and a student-centric approach, we focus on building strong academic foundations while nurturing critical thinking and problem-solving skills.</p>
+                
+                <h3 style="margin-top: 30px;">Our Vision</h3>
+                <p>To create a learning environment where every student can achieve their full potential and develop a lifelong love for learning.</p>
+                
+                <h3 style="margin-top: 30px;">Contact Information</h3>
+                <p><i class="fas fa-map-marker-alt"></i>Lokmanya Nagar </p>
+                <p><i class="fas fa-phone"></i> +91 9136527042</p>
+                
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>About R.S Tuition</h3>
+                <p>We are committed to providing quality education to students from classes 1 to 10 through innovative teaching methods and comprehensive study materials.</p>
+                
+            </div>
+            
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#" class="nav-link" data-section="home">Home</a></li>
+                    <li><a href="#" class="nav-link" data-section="courses">Courses</a></li>
+                    <li><a href="#" class="nav-link" data-section="resources">Resources</a></li>
+                    <li><a href="#" class="nav-link" data-section="results">Results</a></li>
+                    <li><a href="#" class="nav-link" data-section="about">About Us</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Classes</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Class 1-5</a></li>
+                    <li><a href="#">Class 6-8</a></li>
+                    <li><a href="#">Class 9</a></li>
+                    <li><a href="#">Class 10</a></li>
+                    <li><a href="#">Crash Courses</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Contact Us</h3>
+                <ul class="footer-links">
+                    <p><i class="fas fa-map-marker-alt"></i>Lokmanya Nagar </p>
+                <p><i class="fas fa-phone"></i> +91 9136527042</p>
+                    <li><i class="fas fa-clock"></i> Mon-Sat: 9:00 AM - 6:00 PM</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 R.S Tuition. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Data storage
+        let data = {
+            notes: [],
+            pyqs: [],
+            tests: [],
+            results: [],
+            students: []
+        };
+
+        // Current user
+        let currentUser = null;
+
+        // Initialize data from localStorage
+        function initData() {
+            const savedData = localStorage.getItem('rsTuitionData');
+            if (savedData) {
+                data = JSON.parse(savedData);
+            } else {
+                // Add sample data for demonstration
+                data.notes.push({
+                });
+                
+                data.pyqs.push({
+                    
+                });
+                
+                data.tests.push({
+                    id: 'test1',
+                    class: '10',
+                    title: 'Mathematics Quiz 1',
+                    description: 'Basic mathematics concepts quiz',
+                    questions: [
+                        {
+                            question: 'What is the value of π (pi) approximately?',
+                            options: ['3.14', '2.71', '1.41', '1.61'],
+                            correctAnswer: 0
+                        },
+                        {
+                            question: 'What is the square root of 64?',
+                            options: ['6', '7', '8', '9'],
+                            correctAnswer: 2
+                        }
+                    ],
+                    date: new Date().toLocaleDateString()
+                });
+                
+                saveData();
+            }
+            
+            updateAdminStats();
+            loadStudentsTable();
+        }
+
+        // Save data to localStorage
+        function saveData() {
+            localStorage.setItem('rsTuitionData', JSON.stringify(data));
+            updateAdminStats();
+            loadStudentsTable();
+        }
+
+        // Update admin dashboard stats
+        function updateAdminStats() {
+            document.getElementById('adminStudentsCount').textContent = data.students.length;
+            document.getElementById('adminNotesCount').textContent = data.notes.length;
+            document.getElementById('adminPYQCount').textContent = data.pyqs.length;
+            document.getElementById('adminTestsCount').textContent = data.tests.length;
+        }
+
+        // Load students table
+        function loadStudentsTable() {
+            const studentsList = document.getElementById('studentsList');
+            
+            if (data.students.length === 0) {
+                studentsList.innerHTML = '<tr><td colspan="5" style="text-align: center;">No students registered yet.</td></tr>';
+            } else {
+                studentsList.innerHTML = data.students.map(student => `
+                    <tr>
+                        <td>${student.name}</td>
+                        <td>${student.email}</td>
+                        <td>Class ${student.class}</td>
+                        <td>${student.registrationDate}</td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="action-btn edit" onclick="editStudent('${student.id}')">Edit</button>
+                                <button class="action-btn delete" onclick="deleteStudent('${student.id}')">Delete</button>
+                            </div>
+                        </td>
+                    </tr>
+                `).join('');
+            }
+        }
+
+        // Navigation functions
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Update navigation links
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            // Update active nav link if it exists
+            const activeNavLink = document.querySelector(`.nav-link[data-section="${sectionId}"]`);
+            if (activeNavLink) {
+                activeNavLink.classList.add('active');
+            }
+            
+            // Close mobile menu
+            nav.classList.remove('active');
+            mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            
+            // Load specific content if needed
+            if (sectionId === 'student-panel') {
+                loadStudentPanel();
+            } else if (sectionId === 'admin-panel') {
+                loadAdminPanel();
+            }
+        }
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const nav = document.querySelector('nav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            nav.classList.toggle('active');
+            mobileMenuBtn.innerHTML = nav.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+
+        // Navigation links
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const sectionId = link.getAttribute('data-section');
+                showSection(sectionId);
+            });
+        });
+
+        // Auth tab switching
+        document.querySelectorAll('.auth-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                const tabId = tab.getAttribute('data-tab');
+                
+                // Update tabs
+                document.querySelectorAll('.auth-tab').forEach(t => {
+                    t.classList.remove('active');
+                });
+                tab.classList.add('active');
+                
+                // Update forms
+                document.querySelectorAll('.auth-form-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        // Student login
+        document.getElementById('studentLoginForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('studentEmail').value;
+            const password = document.getElementById('studentPassword').value;
+            
+            // Find student
+            const student = data.students.find(s => s.email === email && s.password === password);
+            
+            if (student) {
+                currentUser = student;
+                showSection('student-panel');
+            } else {
+                alert('Invalid email or password. Please try again.');
+            }
+        });
+
+        // Student registration
+        document.getElementById('studentRegisterForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('registerName').value;
+            const email = document.getElementById('registerEmail').value;
+            const studentClass = document.getElementById('registerClass').value;
+            const password = document.getElementById('registerPassword').value;
+            const confirmPassword = document.getElementById('registerConfirmPassword').value;
+            
+            if (password !== confirmPassword) {
+                alert('Passwords do not match. Please try again.');
+                return;
+            }
+            
+            // Check if email already exists
+            const existingStudent = data.students.find(student => student.email === email);
+            if (existingStudent) {
+                alert('This email is already registered. Please login instead.');
+                return;
+            }
+            
+            // Add new student
+            const newStudent = {
+                id: 'student' + Date.now(),
+                name: name,
+                email: email,
+                password: password,
+                class: studentClass,
+                registrationDate: new Date().toLocaleDateString()
+            };
+            
+            data.students.push(newStudent);
+            saveData();
+            
+            alert('Registration successful! You can now login.');
+            
+            // Switch to login tab
+            document.querySelectorAll('.auth-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelector('.auth-tab[data-tab="student-login-tab"]').classList.add('active');
+            
+            document.querySelectorAll('.auth-form-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.getElementById('student-login-tab').classList.add('active');
+            
+            // Clear form
+            document.getElementById('studentRegisterForm').reset();
+        });
+
+        // Admin login
+        document.getElementById('adminLoginForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('adminEmail').value;
+            const password = document.getElementById('adminPassword').value;
+            
+            if (email === 'admin@rstuition.com' && password === 'admin@423') {
+                currentUser = { name: 'Administrator', role: 'admin' };
+                showSection('admin-panel');
+            } else {
+                alert('Invalid credentials!');
+            }
+        });
+
+        // Load student panel
+        function loadStudentPanel() {
+            if (!currentUser) return;
+            
+            // Update student info
+            document.getElementById('studentWelcome').textContent = `Welcome, ${currentUser.name}!`;
+            document.getElementById('studentClassInfo').textContent = `Class: ${currentUser.class}`;
+            
+            // Load student content
+            const studentClass = currentUser.class;
+            const studentId = currentUser.id;
+            
+            // Load notes
+            const notesList = document.getElementById('studentNotesList');
+            const classNotes = data.notes.filter(note => note.class === studentClass);
+            
+            if (classNotes.length === 0) {
+                notesList.innerHTML = '<p>No notes available for your class yet.</p>';
+            } else {
+                notesList.innerHTML = '';
+                classNotes.forEach(note => {
+                    const noteItem = document.createElement('div');
+                    noteItem.className = 'file-item';
+                    noteItem.innerHTML = `
+                        <div class="file-info">
+                            <h4>${note.title}</h4>
+                            <p>${note.description} | Uploaded: ${note.date}</p>
+                        </div>
+                        <div class="file-actions">
+                            <button class="file-action-btn download" onclick="downloadFile('${note.filename}', '${note.title}')">Download</button>
+                        </div>
+                    `;
+                    notesList.appendChild(noteItem);
+                });
+            }
+            
+            // Load PYQs
+            const pyqList = document.getElementById('studentPYQList');
+            const classPYQs = data.pyqs.filter(pyq => pyq.class === studentClass);
+            
+            if (classPYQs.length === 0) {
+                pyqList.innerHTML = '<p>No PYQs available for your class yet.</p>';
+            } else {
+                pyqList.innerHTML = '';
+                classPYQs.forEach(pyq => {
+                    const pyqItem = document.createElement('div');
+                    pyqItem.className = 'file-item';
+                    pyqItem.innerHTML = `
+                        <div class="file-info">
+                            <h4>${pyq.title}</h4>
+                            <p>${pyq.description} | Uploaded: ${pyq.date}</p>
+                        </div>
+                        <div class="file-actions">
+                            <button class="file-action-btn download" onclick="downloadFile('${pyq.filename}', '${pyq.title}')">Download</button>
+                        </div>
+                    `;
+                    pyqList.appendChild(pyqItem);
+                });
+            }
+            
+            // Load tests
+            const testsList = document.getElementById('studentTestsList');
+            const classTests = data.tests.filter(test => test.class === studentClass);
+            
+            if (classTests.length === 0) {
+                testsList.innerHTML = '<p>No tests available for your class yet.</p>';
+            } else {
+                testsList.innerHTML = '';
+                classTests.forEach(test => {
+                    const testItem = document.createElement('div');
+                    testItem.className = 'test-item';
+                    testItem.innerHTML = `
+                        <h4>${test.title}</h4>
+                        <p>${test.description} | Questions: ${test.questions.length}</p>
+                        <button class="btn btn-primary" onclick="takeTest('${test.id}')">Take Test</button>
+                    `;
+                    testsList.appendChild(testItem);
+                });
+            }
+            
+            // Load student results
+            const studentResults = document.getElementById('studentResults');
+            const studentTestResults = data.results.filter(result => result.studentId === studentId);
+            
+            if (studentTestResults.length === 0) {
+                studentResults.innerHTML = '<p>You haven\'t taken any tests yet.</p>';
+            } else {
+                studentResults.innerHTML = `
+                    <table class="results-table">
+                        <thead>
+                            <tr>
+                                <th>Test</th>
+                                <th>Score</th>
+                                <th>Percentage</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${studentTestResults.map(result => `
+                                <tr>
+                                    <td>${result.testTitle}</td>
+                                    <td>${result.score}/${result.total}</td>
+                                    <td>${result.percentage.toFixed(2)}%</td>
+                                    <td>${result.date}</td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                `;
+            }
+            
+            // Update stats
+            document.getElementById('studentNotesCount').textContent = classNotes.length;
+            document.getElementById('studentPYQCount').textContent = classPYQs.length;
+            document.getElementById('studentTestsCount').textContent = classTests.length;
+            document.getElementById('studentResultsCount').textContent = studentTestResults.length;
+        }
+
+        // Load admin panel
+        function loadAdminPanel() {
+            // Load admin results
+            const adminResults = document.getElementById('adminResults');
+            
+            if (data.results.length === 0) {
+                adminResults.innerHTML = '<p>No test results available yet.</p>';
+            } else {
+                adminResults.innerHTML = `
+                    <table class="results-table">
+                        <thead>
+                            <tr>
+                                <th>Student</th>
+                                <th>Test</th>
+                                <th>Score</th>
+                                <th>Percentage</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${data.results.map(result => `
+                                <tr>
+                                    <td>${result.studentName}</td>
+                                    <td>${result.testTitle}</td>
+                                    <td>${result.score}/${result.total}</td>
+                                    <td>${result.percentage.toFixed(2)}%</td>
+                                    <td>${result.date}</td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                `;
+            }
+        }
+
+        // Upload notes
+        document.getElementById('uploadNotesForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const notesClass = document.getElementById('notesClass').value;
+            const notesTitle = document.getElementById('notesTitle').value;
+            const notesDescription = document.getElementById('notesDescription').value;
+            const notesFile = document.getElementById('notesFile').files[0];
+            
+            if (!notesFile) {
+                showAlert('notesAlert', 'Please select a file to upload.', 'error');
+                return;
+            }
+            
+            // Create a unique filename
+            const filename = `notes_${Date.now()}_${notesFile.name}`;
+            
+            // Add to data
+            data.notes.push({
+                id: Date.now().toString(),
+                class: notesClass,
+                title: notesTitle,
+                description: notesDescription,
+                filename: filename,
+                date: new Date().toLocaleDateString()
+            });
+            
+            saveData();
+            
+            // Show success message
+            showAlert('notesAlert', 'Notes uploaded successfully!', 'success');
+            
+            // Reset form
+            document.getElementById('uploadNotesForm').reset();
+        });
+
+        // Add question to test form
+        document.getElementById('addQuestionBtn').addEventListener('click', () => {
+            const questionsContainer = document.getElementById('questionsContainer');
+            const questionCount = questionsContainer.children.length + 1;
+            
+            const questionGroup = document.createElement('div');
+            questionGroup.className = 'form-group';
+            questionGroup.innerHTML = `
+                <label>Question ${questionCount}</label>
+                <input type="text" class="question-input" placeholder="Enter question" required>
+                <input type="text" class="option-input" placeholder="Option A" required>
+                <input type="text" class="option-input" placeholder="Option B" required>
+                <input type="text" class="option-input" placeholder="Option C" required>
+                <input type="text" class="option-input" placeholder="Option D" required>
+                <select class="correct-answer" required>
+                    <option value="">Correct Answer</option>
+                    <option value="0">A</option>
+                    <option value="1">B</option>
+                    <option value="2">C</option>
+                    <option value="3">D</option>
+                </select>
+            `;
+            
+            questionsContainer.appendChild(questionGroup);
+        });
+
+        // Create test
+        document.getElementById('createTestForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const testClass = document.getElementById('testClass').value;
+            const testTitle = document.getElementById('testTitle').value;
+            const testDescription = document.getElementById('testDescription').value;
+            
+            // Get all questions
+            const questionInputs = document.querySelectorAll('.question-input');
+            const optionInputs = document.querySelectorAll('.option-input');
+            const correctAnswers = document.querySelectorAll('.correct-answer');
+            
+            const questions = [];
+            const questionsCount = questionInputs.length;
+            
+            for (let i = 0; i < questionsCount; i++) {
+                const question = questionInputs[i].value;
+                const options = [
+                    optionInputs[i*4].value,
+                    optionInputs[i*4+1].value,
+                    optionInputs[i*4+2].value,
+                    optionInputs[i*4+3].value
+                ];
+                const correctAnswer = parseInt(correctAnswers[i].value);
+                
+                if (!question || options.some(opt => !opt) || isNaN(correctAnswer)) {
+                    showAlert('testAlert', 'Please fill all question fields correctly.', 'error');
+                    return;
+                }
+                
+                questions.push({
+                    question: question,
+                    options: options,
+                    correctAnswer: correctAnswer
+                });
+            }
+            
+            // Add test to data
+            data.tests.push({
+                id: Date.now().toString(),
+                class: testClass,
+                title: testTitle,
+                description: testDescription,
+                questions: questions,
+                date: new Date().toLocaleDateString()
+            });
+            
+            saveData();
+            
+            // Show success message
+            showAlert('testAlert', 'MCQ Test created successfully!', 'success');
+            
+            // Reset form
+            document.getElementById('createTestForm').reset();
+            document.getElementById('questionsContainer').innerHTML = `
+                <div class="form-group">
+                    <label>Question 1</label>
+                    <input type="text" class="question-input" placeholder="Enter question" required>
+                    <input type="text" class="option-input" placeholder="Option A" required>
+                    <input type="text" class="option-input" placeholder="Option B" required>
+                    <input type="text" class="option-input" placeholder="Option C" required>
+                    <input type="text" class="option-input" placeholder="Option D" required>
+                    <select class="correct-answer" required>
+                        <option value="">Correct Answer</option>
+                        <option value="0">A</option>
+                        <option value="1">B</option>
+                        <option value="2">C</option>
+                        <option value="3">D</option>
+                    </select>
+                </div>
+            `;
+        });
+
+        // Take test
+        function takeTest(testId) {
+            const test = data.tests.find(t => t.id === testId);
+            if (!test) return;
+            
+            // Create test interface
+            const testHTML = `
+                <div class="mcq-test">
+                    <h3>${test.title}</h3>
+                    <p>${test.description}</p>
+                    <form id="testForm">
+                        ${test.questions.map((q, index) => `
+                            <div class="mcq-question">
+                                <h4>Question ${index + 1}: ${q.question}</h4>
+                                <div class="mcq-options">
+                                    ${q.options.map((option, optIndex) => `
+                                        <label class="mcq-option">
+                                            <input type="radio" name="q${index}" value="${optIndex}" required>
+                                            <span>${String.fromCharCode(65 + optIndex)}. ${option}</span>
+                                        </label>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        `).join('')}
+                        <button type="submit" class="btn btn-primary">Submit Test</button>
+                    </form>
+                </div>
+            `;
+            
+            // Show test
+            const testsList = document.getElementById('studentTestsList');
+            testsList.innerHTML = testHTML;
+            
+            // Handle test submission
+            document.getElementById('testForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+                submitTest(test);
+            });
+        }
+
+        // Submit test
+        function submitTest(test) {
+            const form = document.getElementById('testForm');
+            const formData = new FormData(form);
+            let score = 0;
+            
+            // Calculate score
+            test.questions.forEach((question, index) => {
+                const answer = parseInt(formData.get(`q${index}`));
+                if (answer === question.correctAnswer) {
+                    score++;
+                }
+            });
+            
+            // Calculate percentage
+            const percentage = (score / test.questions.length) * 100;
+            
+            // Save result
+            data.results.push({
+                testId: test.id,
+                testTitle: test.title,
+                studentId: currentUser.id,
+                studentName: currentUser.name,
+                studentClass: currentUser.class,
+                score: score,
+                total: test.questions.length,
+                percentage: percentage,
+                date: new Date().toLocaleDateString()
+            });
+            
+            saveData();
+            
+            // Show result
+            const testsList = document.getElementById('studentTestsList');
+            testsList.innerHTML = `
+                <div class="alert alert-success">
+                    <h3>Test Completed!</h3>
+                    <p>Your Score: ${score}/${test.questions.length} (${percentage.toFixed(2)}%)</p>
+                    <button class="btn btn-primary" onclick="loadStudentPanel()">Back to Tests</button>
+                </div>
+            `;
+            
+            // Reload student results
+            const studentResults = document.getElementById('studentResults');
+            const studentTestResults = data.results.filter(result => result.studentId === currentUser.id);
+            
+            studentResults.innerHTML = `
+                <table class="results-table">
+                    <thead>
+                        <tr>
+                            <th>Test</th>
+                            <th>Score</th>
+                            <th>Percentage</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${studentTestResults.map(result => `
+                            <tr>
+                                <td>${result.testTitle}</td>
+                                <td>${result.score}/${result.total}</td>
+                                <td>${result.percentage.toFixed(2)}%</td>
+                                <td>${result.date}</td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            `;
+            
+            // Update results count
+            document.getElementById('studentResultsCount').textContent = studentTestResults.length;
+        }
+
+        // Student management functions
+        function editStudent(studentId) {
+            const student = data.students.find(s => s.id === studentId);
+            if (student) {
+                const newName = prompt('Enter new name:', student.name);
+                if (newName && newName.trim() !== '') {
+                    student.name = newName.trim();
+                    saveData();
+                    alert('Student information updated successfully!');
+                }
+            }
+        }
+
+        function deleteStudent(studentId) {
+            if (confirm('Are you sure you want to delete this student?')) {
+                data.students = data.students.filter(s => s.id !== studentId);
+                saveData();
+                alert('Student deleted successfully!');
+            }
+        }
+
+        // Download file (simulated)
+        function downloadFile(filename, title) {
+            alert(`In a real implementation, this would download: ${filename}\n\nTitle: ${title}`);
+            // In a real implementation, this would trigger a file download
+        }
+
+        // Show alert
+        function showAlert(elementId, message, type) {
+            const alertElement = document.getElementById(elementId);
+            alertElement.innerHTML = `<div class="alert alert-${type}">${message}</div>`;
+            
+            // Clear alert after 3 seconds
+            setTimeout(() => {
+                alertElement.innerHTML = '';
+            }, 3000);
+        }
+
+        // Logout functions
+        document.getElementById('studentLogoutBtn').addEventListener('click', () => {
+            currentUser = null;
+            showSection('home');
+        });
+
+        document.getElementById('adminLogoutBtn').addEventListener('click', () => {
+            currentUser = null;
+            showSection('home');
+        });
+
+        // Button event listeners
+        document.getElementById('studentLoginBtn').addEventListener('click', () => {
+            showSection('student-login');
+        });
+
+        document.getElementById('adminLoginBtn').addEventListener('click', () => {
+            showSection('admin-login');
+        });
+
+        document.getElementById('heroStudentBtn').addEventListener('click', () => {
+            showSection('student-login');
+        });
+
+        document.getElementById('heroAdminBtn').addEventListener('click', () => {
+            showSection('admin-login');
+        });
+
+        document.getElementById('studentAccessBtn').addEventListener('click', () => {
+            showSection('student-login');
+        });
+
+        document.getElementById('adminAccessBtn').addEventListener('click', () => {
+            showSection('admin-login');
+        });
+
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', () => {
+            initData();
+        });
+    </script>
+</body>
+</html>
